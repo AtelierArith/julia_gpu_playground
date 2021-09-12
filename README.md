@@ -1,4 +1,6 @@
-# DevEnv for Julia w/ GPU users
+# julia_gpu_playground
+
+For those who want to use Julia with GPU
 
 # Setup
 
