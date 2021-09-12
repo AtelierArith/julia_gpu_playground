@@ -95,7 +95,7 @@ $ make
 ## Initialize Docker containerd
 
 ```console
-$ $ docker-compose run --rm julia
+$ docker-compose run --rm julia
 Creating juliagpu_julia_run ... done
                _
    _       _ _(_)_     |  Documentation: https://docs.julialang.org
