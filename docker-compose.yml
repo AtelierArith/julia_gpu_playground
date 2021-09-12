@@ -1,0 +1,40 @@
+version: '3'
+services:
+  jupyter:
+    image: gpujl
+    runtime: nvidia
+    container_name: gpujl-jupyter
+    volumes:
+      - ./:/work
+    working_dir: /work
+    ports:
+      - "8888:8888"
+    command: jupyter notebook --notebook-dir /work --ip=0.0.0.0 --allow-root
+  lab:
+    image: gpujl
+    runtime: nvidia
+    container_name: gpujl-lab
+    volumes:
+      - ./:/work
+    working_dir: /work
+    ports:
+      - "8888:8888"
+    command: jupyter lab --notebook-dir /work --ip=0.0.0.0 --allow-root
+  julia:
+    image: gpujl
+    runtime: nvidia
+    container_name: gpujl-julia
+    volumes:
+      - ./:/work
+    working_dir: /work
+    command: julia --project=/work
+
+  pluto:
+    image: gpujl
+    container_name: gpujl-pluto
+    volumes:
+      - ./:/work
+    working_dir: /work
+    ports:
+      - "9999:9999"
+    command: julia -e 'import Pluto; Pluto.run(host="0.0.0.0", port=9999)'
