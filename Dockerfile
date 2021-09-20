@@ -113,10 +113,12 @@ USER ${NB_USER}
 RUN julia -e '\
     using Pkg; Pkg.instantiate(); \
     Pkg.precompile(); \
-    # Download CUDA artifacts \
     using CUDA; \
-    @assert CUDA.functional(true); \
-    @assert CUDA.has_cudnn(); \
+    if CUDA.functional() \
+        # Download CUDA artifacts; \
+        @assert CUDA.functional(true); \
+        @assert CUDA.has_cudnn(); \
+    end; \
     using InteractiveUtils; versioninfo() \
 '
 
